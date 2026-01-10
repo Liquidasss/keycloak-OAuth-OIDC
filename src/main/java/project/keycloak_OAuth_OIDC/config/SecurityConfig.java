@@ -31,6 +31,10 @@ public class SecurityConfig {
 
         return http
                 .authorizeHttpRequests(c -> c.requestMatchers("/error").permitAll()
+                        .requestMatchers("/public/hello").permitAll()
+                        .requestMatchers("/member/hello").hasRole("MEMBER")
+                        .requestMatchers("/moderator/hello").hasRole("MODERATOR")
+                        .requestMatchers("/admin/hello").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .build();
     }
