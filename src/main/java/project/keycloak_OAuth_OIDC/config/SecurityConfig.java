@@ -69,7 +69,6 @@ public class SecurityConfig {
                                     .map(GrantedAuthority.class::cast))
                     .toList();
         });
-
         return converter;
     }
 
