@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/User
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/student
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9090/realms/student
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: springsecurity
+            client-secret: mRvUO4GuQGv4u8g1BkCvhqYnI30pDHjq
+            client-name: springsecurity
+            authorization-grant-type: authorization_code
+            scope: openid, profile, email
+
+server:
+  port: 8080
