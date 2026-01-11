@@ -39,13 +39,6 @@ public class SecurityConfig {
                 .build();
     }
 
-    JwtDecoder issuerUri = new JwtDecoder() {
-        @Override
-        public Jwt decode(String token) throws JwtException {
-            return null;
-        }
-    };
-
     @Bean
     JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder
